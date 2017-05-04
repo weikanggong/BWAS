@@ -1,6 +1,6 @@
 # BWAS beta version
 
-A Matlab-based software for brain-wide association study. To use this software, please
+A Matlab software package for brain-wide association study. To use this software, please
 
 (1) Include all these functions in the Matlab path.
 
