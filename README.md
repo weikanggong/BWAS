@@ -1,4 +1,4 @@
-# A Matlab software package for whole-brain voxel-level functional connectivity association study (BWAS)
+# A Matlab software package for whole-brain voxel-level functional connectivity association study (Brain-wide association study)
 
 It has been tested in Matlab 2015b and latter in the Linux system. For the number of subjects >200, a computer with at least 64GB memory is recommended if you use 3 mm resolution fMRI data (approximately 50000 voxels for each subjects), and at least 32GB memory is recommended if you use 4 mm resolution data (approximately 15000 voxels for each subjects).
 
