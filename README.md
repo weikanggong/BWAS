@@ -24,7 +24,7 @@ Now let's begin the analysis! First, you should make a new directory for the ana
 
 This function can 1) estimate each subjects voxel-level brain network, 2) perform connexel-wise statistical tests. The results will     be automatically saved in your current matlab path as 'stat_map00*.mat'. This step may take few hours to finish.
 
-(5) Now we can analyze the results to find significant functional connectivities and functional-connectivity clusters based on the  Gaussian random field theory. This can be achieved by 'BWAS_analysis_link.m' function. The output is a 'Link_BWAS_results.mat' file     in your working directory. The descriptions within 'BWAS_analysis_link.m' illustrate the meaning of each output.
+(5) Now we can analyze the results to find significant functional connectivities and functional-connectivity clusters based on the  Gaussian random field theory. This can be achieved by 'BWAS_analysis_link.m' function. The output is a 'Link_BWAS_results.mat' file in your working directory. The descriptions within 'BWAS_analysis_link.m' illustrate the meaning of each output.
 
 The analysis is finished now !
 
