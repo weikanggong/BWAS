@@ -28,5 +28,5 @@ This function can 1) estimate each subjects voxel-level brain network, 2) perfor
 
 The analysis is finished now !
 
-
+If you have any questions, please contact me (E-mail: weikanggong@gmail.com).
 
