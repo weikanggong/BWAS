@@ -60,7 +60,7 @@ end
 parpool(n_processors);
 
 if peak_thre>0.1
-    disp('Not recommanded for peak threshold > 0.01...');
+    disp('Not recommanded for peak threshold > 0.1...');
 end
 
 if CDT<5
@@ -77,7 +77,7 @@ a=dir('stat_map*.mat');
 link_result=load(a(1).name);
 [n1,n2]=size(link_result.stat_map);
 %peak threshold
-z_thre=BWAS_peak(sqrt(n1*(n1-1)/2),sqrt(n1*(n1-1)/2),peak_thre,fwhm);
+z_thre=BWAS_peak(sqrt(n1*(n1-1)/2),sqrt(n1*(n1-1)/2),peak_thre,[fwhm,fwhm,fwhm]);
 %cluster threshold
 
 disp('Loading the results...');
@@ -179,7 +179,7 @@ for jj=1:length(dd1)
     ind3=(ind1==dd1(jj) & ind2==dd2(jj));
     clsize1=clsize(jj);
     %cluster uncorrected and FWER-corrected p-value
-    [p1,rawp(jj)]=BWAS_cluster_p(sqrt(n1*(n1-1)/2),sqrt(n1*(n1-1)/2),CDT,clsize1,fwhm);
+    [p1,rawp(jj)]=BWAS_cluster_p(sqrt(n1*(n1-1)/2),sqrt(n1*(n1-1)/2),CDT,clsize1,[fwhm,fwhm,fwhm]);
     if clsize1>0
         %FC in the cluster
         cluster_result(jj).clusters=clusters_links2(ind3,:);
@@ -195,7 +195,7 @@ end
 %cluster's false discovery rate
 fdr=mafdr(rawp,'BHFDR',1);
 for jj=1:length(dd1)
-    if clsize(jj)>30
+    if clsize(jj)>0
         cluster_result(jj).FDR=fdr(jj);
     end
 end
