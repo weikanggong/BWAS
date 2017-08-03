@@ -4,7 +4,7 @@ The software has been tested in Matlab 2015b and high versions in the Linux Cent
 
 A computer with 64GB memory is recommended.
 
-**To use this software, please:**
+To use this software, please:
 
  **1. Put all these functions in the Matlab path.**
 
@@ -20,7 +20,7 @@ This can be done automatically by the 'BWAS_prepare.m' function. Note that 1) on
 
 The row is the subjects, the first column is the primary variable of interests (e.g. disease status (0-1 variable), IQ (continuous variable) ), the other columns are the covariates (e.g. age, gender, motion). You do not need to include a     colum of 1 in the design matrix. This file should be prepared by yourself.
 
-**Now let's begin the analysis! First, you should make a new directory for the analysis.**
+Now let's begin the analysis! First, you should make a new directory for the analysis.
 
 **4. After the above steps, you will get three things: 1) the preprocessed data in a cell array, 2) the mask, 3) the design matrix with the first column as the phenotype of interest. Then, you can use the function 'BWAS_glm.m'  to perform the first step of the analysis.** 
 
