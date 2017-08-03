@@ -1,6 +1,6 @@
 # A Matlab software package for whole-brain voxel-level functional connectivity association study (Brain-wide association study)
 
-It has been tested in Matlab 2015b and high versions in the Linux CentOS 7.2 system.
+The software has been tested in Matlab 2015b and high versions in the Linux CentOS 7.2 system.
 
 A computer with 64GB memory is recommended.
 
