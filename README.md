@@ -12,9 +12,9 @@ A computer with 64GB memory is recommended.
  
  3. Generate a design matrix as a *.txt file. The number of rows equal to the number of subjects in the analysis, the order is the same as the images' order when typing 'dir('*.nii.gz')' in Matlab. The first column of the design matrix is the phenotype of interest (e.g. disease status (0-1 variable), IQ (continuous variable)), and other columns are the covariates (e.g. age, gender, motion).
  
- 4. Generate a brain mask as a *.nii or *.nii.gz file. Non-zeros elements in this mask indicates the voxels one wants to analyse.
+ 4. Generate a brain mask as a *.nii or *.nii.gz file. The mask is with the same size as your fMRI data. Non-zeros elements in this mask indicates the voxels one wants to analyse.
  
- **Then you can simply use the function
+ **Then you can simply use the function**
  ```
  BWAS_main(result_dir,image_dir,design_dir,mask_dir,CDT,FWER_p)
  ```
@@ -27,7 +27,7 @@ mask_dir: it is the absolute directory of the mask file in *.nii or *.nii.gz for
 CDT: Cluster-definding threshold of functional connectivity clusters, default is Z=5 if one performs a whole-brain analysis.
 FWER_p: the p-value threshold of peak-level inference, default is 0.05.
  ```
-** An example of design matrix (4 subjects, 1 phenotype of interest and 3 covariates):**
+**An example of design matrix (4 subjects, 1 phenotype of interest and 3 covariates):**
 ```
 0 1.5 2 3
 0 2.2 5 4
