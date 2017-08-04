@@ -15,7 +15,7 @@ parfor i=1:length(imgs_abs_dir)
         img2(j,:)=img1(mask~=0);
     end
     images{i}=img2;
-    i
+    disp(['Reading image ',num2str(i),'...']);
 end
 
 

@@ -1,4 +1,4 @@
-function [peak_result,cluster_result]=BWAS_analysis_link(result_dirs,mask,peak_thre,CDT,n_processors)
+function [peak_result,cluster_result,peak_ma,cluster_ma]=BWAS_analysis_link(result_dirs,mask,peak_thre,CDT)
 
 %        results=BWAS_analysis_link(result_dirs,peak_thre,CDT)
 %Input:  result_dirs: the directory of stat_map*.mat and pca_map*.mat
@@ -7,9 +7,8 @@ function [peak_result,cluster_result]=BWAS_analysis_link(result_dirs,mask,peak_t
 %        CDT: cluster define threshold Z
 %             (default 5.5 for 3mm fmri data, better to >5)
 %        fwhm: the 1*3 vector, smoothness of the image
-%        n_processors: number of processors to use (default = 1)
 %Output: save as 'Link_BWAS_results.mat' in 'result_dirs':
-%        peak_result (table): The results for peak-level inference 
+%        peak_result (table): The results for peak-level inference
 %                             Each row is a significant functional
 %                             connectivity
 %                             The first six columns if the matrix
@@ -24,7 +23,7 @@ function [peak_result,cluster_result]=BWAS_analysis_link(result_dirs,mask,peak_t
 %                                       coordinates of functional connectivities,
 %                                       The seventh column is the Z-statistics of the
 %                                       functional connectivities (two-sided).
-%             cluster_results.cluster_size: the number of functional connectivities in this cluster     
+%             cluster_results.cluster_size: the number of functional connectivities in this cluster
 %             cluster_result.uncorrected_p: the uncorrected p-value of this
 %                                           cluster.
 %             cluster_result.FWER_p; the FWER corrected p-value of this
@@ -47,20 +46,16 @@ function [peak_result,cluster_result]=BWAS_analysis_link(result_dirs,mask,peak_t
 %% begin analysis
 if nargin<3
     peak_thre=0.05;
-    CDT=5.5;
+    CDT=5;
 end
 
 if nargin<4
-    CDT=5.5;
+    CDT=5;
 end
 
-if nargin<5
-    n_processors=1;
-end
-parpool(n_processors);
 
 if peak_thre>0.1
-    disp('Not recommanded for peak threshold > 0.1...');
+    disp('Not recommanded for peak threshold > 0.01...');
 end
 
 if CDT<5
@@ -80,7 +75,7 @@ link_result=load(a(1).name);
 z_thre=BWAS_peak(sqrt(n1*(n1-1)/2),sqrt(n1*(n1-1)/2),peak_thre,[fwhm,fwhm,fwhm]);
 %cluster threshold
 
-disp('Loading the results...');
+disp('Loading the SPMs...');
 significant_links={};
 clusters_links={};
 ma1={};ma2={};
@@ -94,7 +89,6 @@ parfor i=1:length(a)
     [d1,d2,v1]=find(sparse(re.*(abs(re)>CDT)));
     clusters_links{i}=[d1,d2+(i-1)*n2,v1];
     ma2{i}=sum(abs(re)>CDT);
-    i
 end
 ma1=cell2mat(ma1);
 ma2=cell2mat(ma2);
@@ -193,20 +187,21 @@ for jj=1:length(dd1)
     end
 end
 %cluster's false discovery rate
-fdr=mafdr(rawp,'BHFDR',1);
-for jj=1:length(dd1)
-    if clsize(jj)>0
-        cluster_result(jj).FDR=fdr(jj);
+if ~isempty(rawp)
+    fdr=mafdr(rawp,'BHFDR',1);
+    for jj=1:length(dd1)
+        if clsize(jj)>0
+            cluster_result(jj).FDR=fdr(jj);
+        end
     end
 end
-
 %mapping peaks and clusters to brain region
 labels=unique(mask(:));
 labels(labels==0)=[];
 if length(labels)>1
     %peak mapping
     kk1=size(peak_result,1);
-    if kk1>30
+    if kk1>0
         region1=[];
         region2=[];
         for i=1:kk1
@@ -235,7 +230,7 @@ if length(labels)>1
         for ii=1:k
             xx{ii,1}=[num2str(prop1(ii)*100),'% FCs connect region ',num2str(una1(ii))];
         end
-            
+        
         una=unique(region2);
         prop=histc(region2,una)/length(region2);
         [prop1,ind]=sort(prop,'descend');
@@ -253,22 +248,23 @@ end
 
 peak_ma=img2dto3d(size(mask),[d1,d2,d3],ma1');
 cluster_ma=zeros(size(mask));
-for j=1:length(cluster_result)
-    if cluster_result(j).FWER_p<0.05
-        clre=cluster_result(j).clusters;
-        d1=clre(:,1);
-        d2=clre(:,2);
-        d3=clre(:,3);
-        d4=clre(:,4);
-        d5=clre(:,5);
-        d6=clre(:,6);
-        for i=1:length(d1)
-            cluster_ma(d4(i),d5(i),d6(i))=cluster_ma(d4(i),d5(i),d6(i))+1;
-            cluster_ma(d1(i),d2(i),d3(i))=cluster_ma(d1(i),d2(i),d3(i))+1;
+if ~isempty(rawp)
+    for j=1:length(cluster_result)
+        if cluster_result(j).FWER_p<0.05
+            clre=cluster_result(j).clusters;
+            d1=clre(:,1);
+            d2=clre(:,2);
+            d3=clre(:,3);
+            d4=clre(:,4);
+            d5=clre(:,5);
+            d6=clre(:,6);
+            for i=1:length(d1)
+                cluster_ma(d4(i),d5(i),d6(i))=cluster_ma(d4(i),d5(i),d6(i))+1;
+                cluster_ma(d1(i),d2(i),d3(i))=cluster_ma(d1(i),d2(i),d3(i))+1;
+            end
         end
     end
 end
-
 disp('The analysis is finished!');
 
 save('Link_BWAS_results.mat','peak_result','cluster_result','mask','peak_thre','CDT','fwhm','peak_ma','cluster_ma')
