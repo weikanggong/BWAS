@@ -18,7 +18,10 @@ A computer with 64GB memory is recommended.
  ```
  BWAS_main(result_dir,image_dir,design_dir,mask_dir,CDT,FWER_p)
  ```
- **to perform all the analysis. The inputs of this function is quite simple:**
+ **to perform all the analysis**. 
+ 
+ 
+ **The inputs of the 'BWAS_main' function are quite simple:**
  ```
 result_dir: it is the absolute directory of a folder to save the outputs of the analysis.
 image_dir: it is the absolute directory of a folder of your images.
