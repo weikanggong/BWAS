@@ -30,6 +30,12 @@ mask_dir: it is the absolute directory of the mask file in *.nii or *.nii.gz for
 CDT: Cluster-definding threshold of functional connectivity clusters, default is Z=5 if one performs a whole-brain analysis.
 FWER_p: the p-value threshold of peak-level inference, default is 0.05.
  ```
+ **The outputs of the 'BWAS_main' function are illustrated in the 'BWAS_analysis_link' function. The most important things are:**
+ 
+ 1. The 6D coordinates of the functional connectivities clusters exceeding the CDT and the corresponding FWER and FDR corrected p-values of their size.
+ 
+ 2. The number of significant functional connectivity in each voxel.
+ 
 **An example of design matrix (4 subjects, 1 phenotype of interest and 3 covariates):**
 ```
 0 1.5 2 3
