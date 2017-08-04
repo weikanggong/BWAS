@@ -32,9 +32,9 @@ FWER_p: the p-value threshold of peak-level inference, default is 0.05.
  ```
  **The outputs of the 'BWAS_main' function are illustrated in the 'BWAS_analysis_link' function. The most important things are:**
  
- 1. The 6D coordinates of the functional connectivities clusters exceeding the CDT and the corresponding FWER and FDR corrected p-values of their size.
+ 1. The 6D coordinates of the functional connectivities clusters exceeding the CDT, and the corresponding FWER and FDR corrected p-values of their size. See 'Link_BWAS_results.mat' for details.
  
- 2. The number of significant functional connectivity in each voxel.
+ 2. The number of significant functional connectivities connecting each voxel. See 'peak_MA.nii.gz' and 'cluster_MA.nii.gz' for details.
  
 **An example of design matrix (4 subjects, 1 phenotype of interest and 3 covariates):**
 ```
