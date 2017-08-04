@@ -4,21 +4,21 @@ The software has been tested in Matlab 2015b and higher versions in the Linux Ce
 
 A computer with 64GB memory is recommended.
 
-**To use this software, please prepare:**
+**To use this software, please prepare the following 4 things:**
 
  1. Put all these functions in the Matlab path.
 
  2. Put all the fMRI images in a folder. Each image must be in .nii.gz format.
  
- 3. Generate a design matrix as a *.txt file. The number of rows equal to the number of subjects in the analysis, the order is the same as the images' order when typing 'dir('*.nii.gz')' in Matlab. The first column of the design matrix is the phenotype of interest (e.g. disease status (0-1 variable), IQ (continuous variable)), and other columns are the covariates (e.g. age, gender, motion).
+ 3. Generate a design matrix in *.txt format. The number of rows equal to the number of subjects in the analysis, the order is the same as the images' order when typing 'dir('*.nii.gz')' in Matlab. The first column of the design matrix is the phenotype of interest (e.g. disease status (0-1 variable), IQ (continuous variable)), and other columns are the covariates (e.g. age, gender, motion).
  
- 4. Generate a brain mask as a *.nii or *.nii.gz file. The mask is with the same size as your fMRI data. Non-zeros elements in this mask indicates the voxels one wants to analyse.
+ 4. Generate a brain mask image in *.nii or *.nii.gz format. The mask is with the same size as the fMRI data. Non-zeros elements in this mask indicates the voxels one wants to analyse.
  
  **Then you can simply use the function**
  ```
  BWAS_main(result_dir,image_dir,design_dir,mask_dir,CDT,FWER_p)
  ```
- **to perform all the analysis**. 
+ **to perform all the analysis. If the analysis are interupted, simply rerun it. It will automatically find the steps that have not been performed.**
  
  
  **The inputs of the 'BWAS_main' function are quite simple:**
