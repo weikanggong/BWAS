@@ -18,7 +18,7 @@ A computer with 64GB memory is recommended.
  ```
  BWAS_main(result_dir,image_dir,design_dir,mask_dir,CDT,FWER_p)
  ```
- **to perform all the analysis. If the analysis are interupted, simply rerun it. It will automatically find the steps that have not been performed.**
+ **to perform all the analysis. If the analysis is interupted, simply rerun it. It will automatically continue the steps that have not been performed.**
  
  
  **The inputs of the 'BWAS_main' function are quite simple:**
