@@ -3,9 +3,9 @@
 
 function new_data=GaussianNormalization(data)
 
-m1=mean(data);
+m1=mean(data,'omitnan');
 
-v1=var(data);
+v1=var(data,'omitnan');
 
 n=size(data,1);
 
