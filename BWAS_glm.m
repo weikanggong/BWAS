@@ -50,7 +50,7 @@ if exist('Estimated_fwhm.mat')==0
     fwhms=[];
     for i=1:n_sample
         img=images{i};
-        img=GaussianNormalization(img);
+        img=GaussianNormalization(img')';
         img4d=img2dto3d(size(mask),[d1,d2,d3],img');
         fwhms(i)=mean(BWAS_est_fwhm(img4d,n_sample));
     end
