@@ -12,7 +12,7 @@ A computer with 64GB memory or more is recommended.
  
  3. Generate a design matrix in *.txt format. The number of rows equal to the number of subjects in the analysis, the order is the same as the images' order when typing 'dir('*.nii.gz')' in Matlab. The first column of the design matrix is the phenotype of interest (e.g. disease status (0-1 variable), IQ (continuous variable)), and other columns are the covariates (e.g. age, gender, motion).
  
- 4. Generate a brain mask image in *.nii or *.nii.gz format. The mask is with the same size as one volume of the fMRI data. Non-zeros elements in this mask indicates the voxels one wants to analyse.
+ 4. Generate a brain mask image in *.nii or *.nii.gz format. The mask is with the same size as one volume of the fMRI data. Non-zeros elements in this mask indicates the voxels one wants to analyse. **Important: make sure that all the fMRI time series within the mask are not constant value!**.
  
  **Then you can simply use the function**
  ```
