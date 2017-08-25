@@ -9,18 +9,19 @@ end
 
 %% prepare the data
 cd(result_dir);
-if exist('data_to_use.mat')==2
+if exist('data_to_use.mat')==0
     cd(image_dir);
     image_dir1=dir('*.nii.gz');
     names={};
     for i=1:length(image_dir1)      
         names{i}=image_dir1(i).name;
     end
-    cd(result_dir);
+   
     aa=load_nii(mask_dir);
     mask=aa.img;
     images=BWAS_prepare(names,mask);
     
+    cd(result_dir);
     disp('Checking image quality...');
     n_voxel=size(images{1},2);
     n_sample=length(images);
@@ -52,7 +53,7 @@ if exist('data_to_use.mat')==2
         error('The number of rows in the design matrix is not the same as the number of images!')
     end
     if sum(isnan(design(:)))>0
-        error('Your phenotype matrix contrains NaN, please check it!');
+        error('Your phenotype matrix contains NaN, please check it!');
     end
     disp('finished! ')
     
