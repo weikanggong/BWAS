@@ -8,7 +8,7 @@ end
 
 
 %% prepare the data
-cd(result_dir);
+
 if exist('data_to_use.mat')==0
     cd(image_dir);
     image_dir1=dir('*.nii.gz');
@@ -20,8 +20,7 @@ if exist('data_to_use.mat')==0
     aa=load_nii(mask_dir);
     mask=aa.img;
     images=BWAS_prepare(names,mask);
-    
-    cd(result_dir);
+
     disp('Checking image quality...');
     n_voxel=size(images{1},2);
     n_sample=length(images);
@@ -69,11 +68,13 @@ if exist('data_to_use.mat')==0
     save('data_to_use.mat','images','design','mask','-v7.3')
     
 else
+    cd(image_dir);
     disp('Loading the data...');
     load('data_to_use.mat');
 end
 
 %% perform the analysis
+cd(result_dir);
 mkdir results
 cd results
 BWAS_glm(images,design,mask);
