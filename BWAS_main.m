@@ -8,7 +8,6 @@ end
 
 
 %% prepare the data
-
 if exist('data_to_use.mat')==0
     cd(image_dir);
     image_dir1=dir('*.nii.gz');
@@ -16,11 +15,11 @@ if exist('data_to_use.mat')==0
     for i=1:length(image_dir1)      
         names{i}=image_dir1(i).name;
     end
-   
+    
     aa=load_nii(mask_dir);
     mask=aa.img;
     images=BWAS_prepare(names,mask);
-
+    
     disp('Checking image quality...');
     n_voxel=size(images{1},2);
     n_sample=length(images);
@@ -52,7 +51,7 @@ if exist('data_to_use.mat')==0
         error('The number of rows in the design matrix is not the same as the number of images!')
     end
     if sum(isnan(design(:)))>0
-        error('Your phenotype matrix contains NaN, please check it!');
+        error('Your phenotype matrix contrains NaN, please check it!');
     end
     disp('finished! ')
     
@@ -74,20 +73,20 @@ else
 end
 
 %% perform the analysis
-cd(result_dir);
+cd(result_dir)
 mkdir results
 cd results
 BWAS_glm(images,design,mask);
 cd ..
 %% analysis the results
-[peak_result,cluster_result,peak_ma,cluster_ma]=BWAS_analysis_link('results',mask,FWER_p,CDT);
+[peak_result,cluster_result,peak_ma,cluster_ma]=BWAS_analysis_results([result_dir,'/results'],mask,FWER_p,CDT);
 
 aa=load_nii(mask_dir);
 aa.img=peak_ma;
 save_nii(aa,'peak_MA.nii.gz')
 aa.img=cluster_ma;
 save_nii(aa,'cluster_MA.nii.gz')
-movefile('Link_BWAS_results.mat','..');
+movefile(['Link_BWAS_results_CDT',num2str(CDT),'.mat'],'..');
 movefile('peak_MA.nii.gz','..');
 movefile('cluster_MA.nii.gz','..');
 

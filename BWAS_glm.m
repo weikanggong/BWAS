@@ -17,42 +17,44 @@ else
     ind_st=length(ab);
 end
 
-for i=ind_st:ind_end
-    st1=(i-1)*n+1;
-    en1=min(i*n,n_voxel);
-    nn=n_voxel*(en1-st1+1);
-    %correlation matrix...
-    disp(['Calculating the correlation matrix across all subjects... '...
-        num2str(i),'/',num2str(ind_end),'. '])
-    r1=zeros(n_sample,n_voxel,en1-st1+1);
-    for j=1:n_sample
-        r1(j,:,:)=corr(images{j},images{j}(:,st1:en1));
+if ind_st<ind_end
+    
+    for i=ind_st:ind_end
+        st1=(i-1)*n+1;
+        en1=min(i*n,n_voxel);
+        nn=n_voxel*(en1-st1+1);
+        %correlation matrix...
+        disp(['Calculating the correlation matrix across all subjects... '...
+            num2str(i),'/',num2str(ind_end),'. '])
+        r1=zeros(n_sample,n_voxel,en1-st1+1);
+        for j=1:n_sample
+            r1(j,:,:)=corr(images{j},images{j}(:,st1:en1));
+        end
+        
+        r1(r1>0.9999)=0;
+        rr1=0.5*log((1+r1)./(1-r1));
+        rr2=reshape(rr1,[n_sample,nn]);
+        
+        %general linear model on FCs...
+        disp(['Calculating the Statistical Parametirc Maps... '...
+            num2str(i),'/',num2str(ind_end),'... '])
+        ts=BWAS_Tregression(design,rr2);
+        zs=norminv(tcdf(ts,n_sample-size(design,2)-1));
+        stat_map=reshape(zs,[n_voxel,(en1-st1+1)]);
+        
+        save(['stat_map',num2str(i,'%04d'),'.mat'],'stat_map','-v7');
+        
     end
-    
-    r1(r1>0.9999)=0;
-    rr1=0.5*log((1+r1)./(1-r1));
-    rr2=reshape(rr1,[n_sample,nn]);
-    
-    %general linear model on FCs...
-    disp(['Calculating the Statistical Parametirc Maps... '...
-        num2str(i),'/',num2str(ind_end),'... '])
-    ts=BWAS_Tregression(design,rr2);
-    zs=norminv(tcdf(ts,n_sample-size(design,2)-1));
-    stat_map=reshape(zs,[n_voxel,(en1-st1+1)]);
-    
-    save(['stat_map',num2str(i,'%04d'),'.mat'],'stat_map','-v7');
-    
 end
-
 if exist('Estimated_fwhm.mat')==0
     disp('Estimating the smoothness of the images...')
     [d1,d2,d3]=ind2sub(size(mask),find(mask~=0));
     fwhms=[];
     for i=1:n_sample
         img=images{i};
-        img=GaussianNormalization(img');
-        img4d=img2dto3d(size(mask),[d1,d2,d3],img);
-        fwhms(i)=mean(BWAS_est_fwhm(img4d,n_sample));
+        %img=GaussianNormalization(img);
+        img4d=img2dto3d(size(mask),[d1,d2,d3],img');
+        fwhms(i)=mean(BWAS_est_fwhm(img4d));
     end
     save('Estimated_fwhm.mat','fwhms');
     
