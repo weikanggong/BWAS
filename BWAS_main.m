@@ -8,8 +8,8 @@ end
 
 
 %% prepare the data
-if exist('data_to_use.mat')==0
-    cd(image_dir);
+cd(image_dir);
+if exist('data_to_use.mat')==0   
     image_dir1=dir('*.nii.gz');
     names={};
     for i=1:length(image_dir1)      
