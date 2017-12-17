@@ -73,6 +73,11 @@ FWER_p: the p-value threshold of peak-level inference, default is 0.05.
 1 2   4 5
 ```
 
+**Cite this package**
+```
+Gong, Weikang, et al. "Statistical testing and power analysis for brain-wide association study." bioRxiv (2017): 089870.
+```
 
 **If you have any questions, please contact me (E-mail: weikanggong@gmail.com).**
+
 
