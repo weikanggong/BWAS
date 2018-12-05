@@ -1,19 +1,37 @@
 # A Python software package for whole-brain voxel-level functional connectivity association study (Brain-wide association study)
 
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-Copyright (C) 2017 Weikang Gong
+Author: Weikang Gong
 
-**Brain-wide association study is a method to analyse voxel-by-voxel resting-state fMRI data. It simply involves (1) calculating the functional connectivities between pairwise voxel across the whole brain; (2) Testing the difference/correlation between functional connectivities and a phenotype of interests; (3) Performing multiple comparison correction using a novel Gaussian Random Field based approach, which generalized the widely-used cluster-size inferece to functional connectivities.**
+DPhil Student, WIN, FMRIB
 
+Nuffield Department of Clinical Neurosciences
 
-I am going to release a new python package soon in the future.
+University of Oxford
+
+Oxford OX3 9DU, UK
+
+Email: weikang.gong@ndcn.ox.ac.uk
+
+Brain-wide association study is a method to analyse voxel-by-voxel resting-state fMRI data. It simply involves (1) calculating the functional connectivities between pairwise voxel across the whole brain; (2) Testing the difference/correlation between functional connectivities and a phenotype of interests; (3) Performing multiple comparison correction using a novel Gaussian Random Field based approach, which generalized the widely-used cluster-size inferece to functional connectivities.
+
+So, what is cluster-size inference on functional connectivities (FC), or what is FC cluster? It is just a bundle of connectivities between two voxel clusters. So intuitively, we are actually testing whether there are many FCs (with p-value < certain cluster-defining threshold) connecting two voxel clusters.
+
+This software package implement the idea of FC clusters, but also performs such a huge number of calculation (correlation matrix + GLM statistics) efficiently and it do not have a memory limit requirement.
+
+I am going to release this new python package soon in the future.
 
 **Cite this package**
 ```
 Weikang Gong, Lin Wan, Wenlian Lu, Liang Ma, Fan Cheng, Wei Cheng, Stefan Gruenewald, Jianfeng Feng, Statistical testing and power analysis for brain-wide association study, Medical Image Analysis (2018), doi: 10.1016/j.media.2018.03.014
 ```
+```
+Rolls, Edmund T., et al. "Functional connectivity of the anterior cingulate cortex in depression and in health." Cerebral Cortex (2018).
+```
 
-**If you have any questions, please contact me (E-mail: weikang.gong@ndcn.ox.ac.uk).**
+
+------------------------------------------------------------------------------------------------------------------------
+Copyright 2018 University of Oxford
 
 **LICENSE**
 
