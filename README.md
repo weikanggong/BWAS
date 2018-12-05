@@ -17,9 +17,17 @@ Email: weikang.gong@ndcn.ox.ac.uk
 
 Brain-wide association study is a method to analyse voxel-by-voxel resting-state fMRI data. It simply involves (1) calculating the functional connectivities between pairwise voxel across the whole brain; (2) Testing the difference/correlation between functional connectivities and a phenotype of interests; (3) Performing multiple comparison correction using a novel Gaussian Random Field based approach, which generalized the widely-used cluster-size inferece to functional connectivities. So, what is cluster-size inference on functional connectivities (FC), or what is FC cluster? It is just a bundle of connectivities between two voxel clusters. So intuitively, we are actually testing whether there are many FCs (with p-value < certain cluster-defining threshold) connecting two voxel clusters.
 
-This software package implement the idea of FC clusters, but also performs such a huge number of calculation (correlation matrix + GLM statistics) efficiently and it do not have a memory limit requirement.
+This software package implement the idea of FC clusters, but also performs such a huge number of calculation (correlation matrix + GLM statistics) efficiently. It no longer has a memory requirement on your computer, and supports both python 2.7 and 3.6, and Mac/Linux/Win system.
 
 I am going to release this new python package soon in the future.
+
+
+
+
+
+
+
+
 
 **Cite this package**
 ```
