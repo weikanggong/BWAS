@@ -23,9 +23,8 @@ I am going to release this new python package soon in the future.
 
 **Cite this package**
 ```
-Weikang Gong, Lin Wan, Wenlian Lu, Liang Ma, Fan Cheng, Wei Cheng, Stefan Gruenewald, Jianfeng Feng, Statistical testing and power analysis for brain-wide association study, Medical Image Analysis (2018), doi: 10.1016/j.media.2018.03.014
-```
-```
+Gong, Weikang, et al. "Statistical testing and power analysis for brain-wide association study." Medical image analysis 47 (2018): 15-30.
+
 Rolls, Edmund T., et al. "Functional connectivity of the anterior cingulate cortex in depression and in health." Cerebral Cortex (2018).
 ```
 
