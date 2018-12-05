@@ -19,7 +19,7 @@ Brain-wide association study is a method to analyse voxel-by-voxel resting-state
 
 This software package implement the idea of FC clusters, but also performs such a huge number of calculation (correlation matrix + GLM statistics) efficiently. It no longer has a memory requirement on your computer, and supports both python 2.7 and 3.6, and Mac/Linux/Win system.
 
-This is still the old matlab package. I am going to release this new python package soon in the future.
+This is still the old matlab package. I am going to release the new python package soon in the future.
 
 
 
