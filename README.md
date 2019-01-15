@@ -37,7 +37,7 @@ This is the development version of BWAS, bug report is wellcome!
 3. To run it in GUI, please use the file: BWAS_gui.py; You can type: **python BWAS_gui.py** to open the gui, the input should be the same as BWAS_main.py. After enter all the things, press "run sKPCR interactively" or "run sKPCR in background" to perform the analysis.
 
 
-## **Output:**
+## **Outputs:**
 
 In the Output directory, 
 1. BWAS_result_CDT=?.mat: the infomation of all FC with |Z|> CDT, including the matrix coordinates and MNI coordinates and the corresponding Z-statistics of each FC.
