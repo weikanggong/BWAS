@@ -40,9 +40,12 @@ This is the development version of BWAS, bug report is wellcome!
 **Output:**
 
 In the Output directory, 
-1. sKPCR_Pval_map.nii.gz: the voxel-wise -log10(p-value) of the association statistic.
-2. sKPCR_Pval_map_FDR0.05.nii.gz: the voxel-wise -log10(p-value) of the association statistic that pass the FDR corrected 0.05 threshold.
-3. sKPCR_Pval_map_FDR0.01.nii.gz: the voxel-wise -log10(p-value) of the association statistic that pass the FDR corrected 0.01 threshold.
+1. BWAS_result_CDT=?.mat: the infomation of all FC with |Z|> CDT, including the matrix coordinates and MNI coordinates and the corresponding Z-statistics of each FC.
+2. 'MA_CDT=?_x.jpg','MA_CDT=?_y.jpg','MA_CDT=?_z.jpg': the figures of the number of significant FCs in each voxel;
+3. 'MA_CDT=??.nii.gz': the number of significant FCs in each voxel;
+4.  BWAS_FC_clusters_plot.pdf: Each figure represent a FC cluster, connecting the left voxel-cluster and the right voxel-cluster, the values on the voxels shows the number of FCs connecting it that pass FC cluster based correction;
+5. brain_gl_negative.txt and brain_gl_positive.txt: the file you can put into braingl software (https://code.google.com/archive/p/braingl/) to visualize the voxel-by-voxel FCs. You should use "braingl_bg.nii.gz" as background. 
+
 
 **Question or report bug:**
 
