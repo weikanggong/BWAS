@@ -34,7 +34,7 @@ This is the development version of BWAS, bug report is wellcome!
 ## **How to use this package:**
 1. All the source code is in the file: **BWAS_cpu.py**
 2. To run it in command line, please use the file: BWAS_main.py; You can type: **python BWAS_main.py -h** to see the help;
-3. To run it in GUI, please use the file: BWAS_gui.py; You can type: **python BWAS_gui.py** to open the gui, the input should be the same as BWAS_main.py. After enter all the things, press "run sKPCR interactively" or "run sKPCR in background" to perform the analysis.
+3. To run it in GUI, please use the file: BWAS_gui.py; You can type: **python BWAS_gui.py** to open the gui, the input should be the same as BWAS_main.py. After enter all the things, press "run BWAS interactively" or "run BWAS in background" to perform the analysis (Do not forget to press the save button after you enter CDT,Memory limits and Number of cores).
 
 
 ## **Outputs:**
