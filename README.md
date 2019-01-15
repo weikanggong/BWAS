@@ -1,6 +1,6 @@
 # BWAS: A powerful and efficient multivariate approach for voxel-level connectome-wide association studies
 
-**Python Code for:**
+## **Python code for:**
 
 ```
 Weikang Gong. et al, "Statistical testing and power analysis for brain-wide association study." Medical image analysis 47 (2018): 15-30.
