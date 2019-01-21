@@ -96,7 +96,7 @@ def BWAS_regression_online3(X,Beta_glm,Sigma_glm):
     #contrast
     contrast=np.hstack((np.ones((1,1),dtype='float32'),np.zeros((1,X.shape[1]-1),dtype='float32'))).T
     
-    ss=np.linalg.inv(np.dot(X.T,X))
+    ss=np.linalg.pinv(np.dot(X.T,X))
 
     #df
     df=X.shape[0]-X.shape[1]
