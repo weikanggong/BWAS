@@ -1194,8 +1194,12 @@ def BWAS_run_full_analysis(result_dir,image_dir,mask_file,toolbox_path,targets_f
     
     if '.npy' in targets_file:
         targets=np.load(targets_file)
+        if len(targets.shape)==1:
+            targets=np.array(targets,ndmin=2).T
     elif '.txt' in targets_file:
         targets=np.loadtxt(targets_file)
+        if len(targets.shape)==1:
+            targets=np.array(targets,ndmin=2).T
     else:
         print('Wrong "targets" file type...')
     
@@ -1203,12 +1207,19 @@ def BWAS_run_full_analysis(result_dir,image_dir,mask_file,toolbox_path,targets_f
         covariates=np.ones((targets.shape[0],1))
     else:
         if '.npy' in targets_file:
-            covariates=np.hstack((np.load(cov_file),np.ones((targets.shape[0],1))))
+            covs_tmp=np.load(cov_file)
+            if len(covs_tmp.shape)==1:
+                covs_tmp=np.array(covs_tmp,ndmin=2).T
+            covariates=np.hstack((covs_tmp,np.ones((targets.shape[0],1))))
         elif '.txt' in targets_file:
-            covariates=np.hstack((np.loadtxt(cov_file),np.ones((targets.shape[0],1))))
+            covs_tmp=np.loadtxt(cov_file)
+            if len(covs_tmp.shape)==1:
+                covs_tmp=np.array(covs_tmp,ndmin=2).T            
+            covariates=np.hstack((covs_tmp,np.ones((targets.shape[0],1))))
         else:
-            print('Wrong "covariates" file type...')            
-        
+            print('Wrong "covariates" file type...')   
+            
+            
     #load the mask for future use
     info=nib.load(mask_file)
     mask=info.get_data()
