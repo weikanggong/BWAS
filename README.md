@@ -38,7 +38,7 @@ This is the development version of BWAS, bug report is wellcome!
 
 7. **Memory limit:** the maxmum memory to use per CPU (in GB).
 
-8. **Number of cores:** usually the more the faster; Memory limit * Number of cores must be < your total avaliable memory.
+8. **Number of cores:** usually the more the faster. (Memory limit x Number of cores) must be smaller than your total avaliable CPU memory.
 
 9. **Output directory:** the absolute directory to save all the outputs.
 
