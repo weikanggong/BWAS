@@ -76,7 +76,7 @@ def BWAS_fisher_z(r):
 
 def BWAS_regression_online1(X,Y,st,en,Betas0):
     
-    ss=np.linalg.inv(np.dot(X.T,X))
+    ss=np.linalg.pinv(np.dot(X.T,X))
     Betas1=Betas0+np.dot(np.dot(ss,X[st:en,:].T),Y)
     
     return Betas1
