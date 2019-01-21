@@ -23,15 +23,24 @@ This is the development version of BWAS, bug report is wellcome!
 
 
 ## **Data structure and required files:**
-**1. Toolbox directory:** The absolute directory of the BWAS code.
-**2. fMRI data:** Please put all your rfMRI data in a directory. The software will read data in alphabet order.
-**3. variable of interest file:** One column. The file format should be either a ".txt" file or a ".npy" file, with each row representing a subject and column representing a variable.
-**4. covariates file:** Multiple columns. The file format should be either a ".txt" file or a ".npy" file, with each row representing a subject and each column representing a variable.
-**5. mask_file:** a binary mask (.nii.gz or .nii format) of your fMRI data.
-**6. CDT:** cluster defining threshold (z-value), usually >=5.
-**7. Memory limit:** the maxmum memory to use per CPU (in GB).
-**8. Number of cores:** usually the more the faster; Memory limit * Number of cores must be < your total avaliable memory.
-**9. Output directory:** the absolute directory to save all the outputs.
+
+1. **Toolbox directory:** The absolute directory of the BWAS code.
+
+2. **fMRI data:** Please put all your rfMRI data in a directory. The software will read data in alphabet order.
+
+3. **variable of interest file:** One column. The file format should be either a ".txt" file or a ".npy" file, with each row representing a subject and column representing a variable.
+
+4. **covariates file:** Multiple columns. The file format should be either a ".txt" file or a ".npy" file, with each row representing a subject and each column representing a variable.
+
+5. **mask_file:** a binary mask (.nii.gz or .nii format) of your fMRI data.
+
+6. **CDT:** cluster defining threshold (z-value), usually >=5.
+
+7. **Memory limit:** the maxmum memory to use per CPU (in GB).
+
+8. **Number of cores:** usually the more the faster; Memory limit * Number of cores must be < your total avaliable memory.
+
+9. **Output directory:** the absolute directory to save all the outputs.
 
 ## **How to use this package:**
 1. All the source code is in the file: **BWAS_cpu.py**
