@@ -61,9 +61,9 @@ In the Output directory,
 
 ## **Question or report bug:**
 
-Author: Weikang Gong (FMRIB Analysis group, NDCN, WIN, University of Oxford)
+Author: Weikang Gong
 
-Email: weikang.gong@ndcn.ox.ac.uk; weikanggong@gmail.com
+Email: weikanggong@gmail.com
 
 
 You may also find sKPCR is useful: https://github.com/weikanggong/sKPCR.
