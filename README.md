@@ -1,4 +1,4 @@
-# BWAS: A powerful and efficient multivariate approach for voxel-level connectome-wide association studies (v0.1-beta)
+# BWAS: Voxel-level connectome-wide association studies (v0.1-beta)
 
 Latest update: 2019-01-21
 
